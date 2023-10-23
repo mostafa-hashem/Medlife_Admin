@@ -16,7 +16,7 @@ class VendorsListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
                 onTap: () => Navigator.pushNamed(context, Routes.vendorInfo,
-                    arguments: vendor),
+                    arguments: vendor[index]),
                 child: VendorWidget(vendor: vendor[index]));
           },
           separatorBuilder: (context, index) {
