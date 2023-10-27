@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medlife_v2/features/completed_requests/ui/screens/completed_requests.dart';
 import 'package:medlife_v2/features/user/ui/screens/users_screen.dart';
 import 'package:medlife_v2/features/vendor/ui/screens/vendors_screen.dart';
 import 'package:medlife_v2/ui/resources/app_colors.dart';
@@ -14,8 +15,6 @@ class HomeLayout extends StatefulWidget {
 
 class _HomeLayoutState extends State<HomeLayout> {
   int currentIndex = 0;
-  bool isUserSelected = true;
-  bool isVendorSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,28 +39,26 @@ class _HomeLayoutState extends State<HomeLayout> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 7.h, horizontal: 8.w),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       GestureDetector(
                         onTap: () {
                           setState(() {
                             currentIndex = 0;
-                            isUserSelected = true;
-                            isVendorSelected = false;
                           });
                         },
                         child: Container(
-                          color: isUserSelected
+                          color: currentIndex == 0
                               ? AppColors.primary
                               : Color(0xfff1f4f6),
                           height: 40.h,
-                          width: 150.w,
+                          width: 90.w,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 "User",
-                                style: isUserSelected
+                                style: currentIndex == 0
                                     ? openSans12W600(color: Colors.white)
                                     : openSans12W600(
                                         color: const Color(0xff1E1E1E)),
@@ -70,27 +67,50 @@ class _HomeLayoutState extends State<HomeLayout> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 19.w),
                       GestureDetector(
                         onTap: () {
                           setState(() {
                             currentIndex = 1;
-                            isVendorSelected = true;
-                            isUserSelected = false;
                           });
                         },
                         child: Container(
-                          color: isVendorSelected
+                          color: currentIndex == 1
                               ? AppColors.primary
                               : Color(0xfff1f4f6),
                           height: 40.h,
-                          width: 150.w,
+                          width: 90.w,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 "Vendor",
-                                style: isVendorSelected
+                                style: currentIndex == 1
+                                    ? openSans12W600(color: Colors.white)
+                                    : openSans12W600(
+                                        color: const Color(0xff1E1E1E)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            currentIndex = 2;
+                          });
+                        },
+                        child: Container(
+                          color: currentIndex == 2
+                              ? AppColors.primary
+                              : Color(0xfff1f4f6),
+                          height: 40.h,
+                          width: 90.w,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Requests",
+                                style: currentIndex == 2
                                     ? openSans12W600(color: Colors.white)
                                     : openSans12W600(
                                         color: const Color(0xff1E1E1E)),
@@ -106,7 +126,7 @@ class _HomeLayoutState extends State<HomeLayout> {
               SizedBox(
                 height: 16.h,
               ),
-              currentIndex == 0 ? UsersScreen() : VendorsScreen(),
+              currentIndex == 0 ? UsersScreen() : currentIndex == 1 ? VendorsScreen() : CompletedRequests(),
             ],
           ),
         ),

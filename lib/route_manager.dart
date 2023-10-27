@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medlife_v2/features/auth/ui/screens/login_screen.dart';
+import 'package:medlife_v2/features/completed_requests/ui/screens/completed_request_details.dart';
 import 'package:medlife_v2/features/user/ui/screens/user_info.dart';
 import 'package:medlife_v2/features/vendor/ui/screens/vendor_info.dart';
 import 'package:medlife_v2/ui/screens/home_layout.dart';
@@ -11,6 +12,7 @@ class Routes {
   static const String login = "/login";
   static const String userInfo = "/userInfo";
   static const String vendorInfo = "/vendorInfo";
+  static const String completedRequestDetails = "/completedRequestDetails";
 }
 
 Route? onGenerateRoute(RouteSettings routeSettings) {
@@ -36,6 +38,10 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const VendorInfo(),
+      );
+    case Routes.completedRequestDetails:
+      return MaterialPageRoute(
+        builder: (_) => const CompletedRequestDetails(),
       );
     default:
       return null;
