@@ -11,16 +11,27 @@ class VendorCubit extends Cubit<VendorState> {
 
   static VendorCubit get(BuildContext context) => BlocProvider.of(context);
 
-  final vendorFirebaseService = VendorFirebaseService();
-  late List<Vendor> vendors;
+  final _vendorFirebaseService = VendorFirebaseService();
+  List<Vendor> vendors = [];
+  late final Vendor mostOrdersVendor;
 
   Future<void> getVendors() async {
-    emit(GetVendorLoading());
+    emit(GetVendorsLoading());
     try {
-      vendors = await vendorFirebaseService.geVendors();
-      emit(GetVendorSuccess());
+      vendors = await _vendorFirebaseService.geVendors();
+      emit(GetVendorsSuccess());
     } catch (e) {
-      emit(GetVendorError(Failure.fromException(e).message));
+      emit(GetVendorsError(Failure.fromException(e).message));
+    }
+  }
+
+  Future<void> getMostOrdersVendor() async {
+    emit(GetMostOrdersVendorLoading());
+    try {
+      mostOrdersVendor = await _vendorFirebaseService.getMostOrdersVendor();
+      emit(GetMostOrdersVendorSuccess());
+    } catch (e) {
+      emit(GetMostOrdersVendorError(Failure.fromException(e).message));
     }
   }
 }

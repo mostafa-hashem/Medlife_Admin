@@ -4,7 +4,7 @@ import 'package:medlife_v2/ui/resources/app_colors.dart';
 import 'package:medlife_v2/ui/resources/text_styles.dart';
 
 class ShippingMethodRow extends StatefulWidget {
-  const ShippingMethodRow({super.key});
+  const ShippingMethodRow();
 
   @override
   State<ShippingMethodRow> createState() => _ShippingMethodRowState();

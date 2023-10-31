@@ -1,12 +1,12 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medlife_v2/features/user/data/models/user.dart';
 import 'package:medlife_v2/ui/resources/app_colors.dart';
 import 'package:medlife_v2/ui/resources/text_styles.dart';
-import 'package:medlife_v2/features/user/data/models/user.dart';
 
 class UserInfo extends StatelessWidget {
-  const UserInfo({super.key});
+  const UserInfo();
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,8 @@ class UserInfo extends StatelessWidget {
                       Text(
                         "${user.email}",
                         style: openSans12W400(
-                            color: Colors.black.withOpacity(0.5),),
+                          color: Colors.black.withOpacity(0.5),
+                        ),
                       ),
                     ],
                   ),
@@ -93,8 +94,9 @@ class UserInfo extends StatelessWidget {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6.r),
-                    color: AppColors.primary,),
+                  borderRadius: BorderRadius.circular(6.r),
+                  color: AppColors.primary,
+                ),
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -117,9 +119,7 @@ class UserInfo extends StatelessWidget {
                     title: 'Block user',
                     desc: 'Do You want to block this user ?',
                     btnCancelOnPress: () {},
-                    btnOkOnPress: () {
-
-                    },
+                    btnOkOnPress: () {},
                   ).show();
                 },
                 child: Row(

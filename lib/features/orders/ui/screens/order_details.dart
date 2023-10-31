@@ -9,7 +9,7 @@ import 'package:medlife_v2/ui/resources/app_colors.dart';
 import 'package:medlife_v2/ui/resources/text_styles.dart';
 
 class OrderDetails extends StatelessWidget {
-  const OrderDetails({super.key});
+  const OrderDetails();
 
   @override
   Widget build(BuildContext context) {

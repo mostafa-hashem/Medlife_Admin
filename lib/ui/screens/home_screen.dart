@@ -21,16 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
 
   @override
-  void initState() {
-    OrdersCubit.get(context).getOrders();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocConsumer<OrdersCubit, OrdersState>(
       listener: (context, state) {
-        if (state is GetOrdersSuccess) {
+        if (state is GetAllOrdersSuccess) {
           OrdersCubit.get(context).getAcceptedOrder();
           OrdersCubit.get(context).getPendingOrders();
           OrdersCubit.get(context).getDeliveredOrders();
@@ -52,8 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.r),
-                      color: const Color(0xfff1f4f6),),
+                    borderRadius: BorderRadius.circular(5.r),
+                    color: const Color(0xfff1f4f6),
+                  ),
                   child: Padding(
                     padding:
                         EdgeInsets.symmetric(vertical: 7.h, horizontal: 8.w),
@@ -80,7 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: currentIndex == 0
                                       ? openSans12W600(color: Colors.white)
                                       : openSans12W600(
-                                          color: const Color(0xff1E1E1E),),
+                                          color: const Color(0xff1E1E1E),
+                                        ),
                                 ),
                               ],
                             ),
@@ -106,7 +102,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: currentIndex == 1
                                       ? openSans12W600(color: Colors.white)
                                       : openSans12W600(
-                                          color: const Color(0xff1E1E1E),),
+                                          color: const Color(0xff1E1E1E),
+                                        ),
                                 ),
                               ],
                             ),
@@ -132,7 +129,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: currentIndex == 2
                                       ? openSans12W600(color: Colors.white)
                                       : openSans12W600(
-                                          color: const Color(0xff1E1E1E),),
+                                          color: const Color(0xff1E1E1E),
+                                        ),
                                 ),
                               ],
                             ),
@@ -145,9 +143,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 16.h,
                 ),
-                if (currentIndex == 0) const UsersScreen() else currentIndex == 1
-                        ? const VendorsScreen()
-                        : const Orders(),
+                if (currentIndex == 0)
+                  const UsersScreen()
+                else
+                  currentIndex == 1 ? const VendorsScreen() : const Orders(),
               ],
             ),
           ),

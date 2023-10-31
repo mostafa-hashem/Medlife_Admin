@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BlocListener<UserCubit, UserState>(
       listener: (_, state) {
-        if (state is GetUserSuccess) {
+        if (state is GetUsersSuccess) {
           Navigator.pushReplacementNamed(context, Routes.layout);
         }
       },

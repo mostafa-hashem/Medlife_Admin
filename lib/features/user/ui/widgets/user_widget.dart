@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medlife_v2/features/user/data/models/user.dart';
 import 'package:medlife_v2/ui/resources/text_styles.dart';
 
 class UserWidget extends StatelessWidget {
-  final user;
+  final User user;
 
   const UserWidget({super.key, required this.user});
 

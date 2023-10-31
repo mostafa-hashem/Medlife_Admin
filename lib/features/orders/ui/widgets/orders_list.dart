@@ -5,12 +5,12 @@ import 'package:medlife_v2/route_manager.dart';
 import 'package:medlife_v2/ui/resources/text_styles.dart';
 
 class OrdersList extends StatelessWidget {
-  const OrdersList({super.key});
+  const OrdersList();
 
   @override
   Widget build(BuildContext context) {
     final ordersCubit = OrdersCubit.get(context);
-    final orders = ordersCubit.orders;
+    final orders = ordersCubit.allOrders;
     return Expanded(
       child: ListView.separated(
         padding: EdgeInsets.zero,
@@ -19,8 +19,10 @@ class OrdersList extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () => Navigator.pushNamed(
-                context, Routes.completedRequestDetails,
-                arguments: orders[index],),
+              context,
+              Routes.completedRequestDetails,
+              arguments: orders[index],
+            ),
             child: SizedBox(
               height: 85.h,
               child: Column(

@@ -38,10 +38,12 @@ class MedLifeAdmin extends StatelessWidget {
               create: (_) => UserCubit()..getUsers(),
             ),
             BlocProvider(
-              create: (_) => VendorCubit()..getVendors(),
+              create: (_) => VendorCubit()
+                ..getVendors()
+                ..getMostOrdersVendor(),
             ),
             BlocProvider(
-              create: (_) => OrdersCubit(),
+              create: (_) => OrdersCubit()..getAllOrders(),
             ),
           ],
           child: const MaterialApp(

@@ -1,5 +1,3 @@
-
-
 import 'package:medlife_v2/utils/data/models/address.dart';
 
 class User {

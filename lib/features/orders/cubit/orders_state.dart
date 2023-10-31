@@ -2,16 +2,15 @@ abstract class OrdersState {}
 
 class OrdersInitial extends OrdersState {}
 
-class GetOrdersLoading extends OrdersState {}
+class GetAllOrdersLoading extends OrdersState {}
 
-class GetOrdersSuccess extends OrdersState {}
+class GetAllOrdersSuccess extends OrdersState {}
 
-class GetOrdersError extends OrdersState {
+class GetAllOrdersError extends OrdersState {
   final String message;
 
-  GetOrdersError(this.message);
+  GetAllOrdersError(this.message);
 }
-
 
 class GetPendingOrdersLoading extends OrdersState {}
 

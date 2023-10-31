@@ -11,19 +11,19 @@ class OrdersCubit extends Cubit<OrdersState> {
   static OrdersCubit get(BuildContext context) =>
       BlocProvider.of<OrdersCubit>(context);
 
-  final ordersFirebaseService = OrdersFirebaseService();
-  List<Order> orders = [];
+  final _ordersFirebaseService = OrdersFirebaseService();
+  List<Order> allOrders = [];
   List<Order> pendingOrders = [];
   List<Order> acceptedOrders = [];
   List<Order> deliveredOrders = [];
 
-  Future<void> getOrders() async {
-    emit(GetOrdersLoading());
+  Future<void> getAllOrders() async {
+    emit(GetAllOrdersLoading());
     try {
-      orders = await ordersFirebaseService.getOrders();
-      emit(GetOrdersSuccess());
+      allOrders = await _ordersFirebaseService.getOrders();
+      emit(GetAllOrdersSuccess());
     } catch (e) {
-      emit(GetOrdersError(Failure.fromException(e).message));
+      emit(GetAllOrdersError(Failure.fromException(e).message));
     }
   }
 
@@ -32,8 +32,7 @@ class OrdersCubit extends Cubit<OrdersState> {
     try {
       await Future.delayed(const Duration(seconds: 1));
       pendingOrders =
-          orders.where((order) => order.status == 'Pending').toList();
-
+          allOrders.where((order) => order.status == 'Pending').toList();
       emit(GetPendingOrdersSuccess());
     } catch (e) {
       emit(GetPendingOrdersError(Failure.fromException(e).message));
@@ -45,7 +44,7 @@ class OrdersCubit extends Cubit<OrdersState> {
     try {
       await Future.delayed(const Duration(seconds: 1));
       acceptedOrders =
-          orders.where((order) => order.status == 'Accepted').toList();
+          allOrders.where((order) => order.status == 'Accepted').toList();
       emit(GetAcceptOrderSuccess());
     } catch (e) {
       emit(GetAcceptOrderError(Failure.fromException(e).message));
@@ -57,8 +56,7 @@ class OrdersCubit extends Cubit<OrdersState> {
     try {
       await Future.delayed(const Duration(seconds: 1));
       deliveredOrders =
-          orders.where((order) => order.status == 'Delivered').toList();
-
+          allOrders.where((order) => order.status == 'Delivered').toList();
       emit(GetDeliveredOrdersSuccess());
     } catch (e) {
       emit(GetDeliveredOrdersError(Failure.fromException(e).message));

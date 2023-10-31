@@ -6,7 +6,7 @@ import 'package:medlife_v2/ui/resources/app_colors.dart';
 import 'package:medlife_v2/ui/resources/text_styles.dart';
 
 class VendorInfo extends StatelessWidget {
-  const VendorInfo({super.key});
+  const VendorInfo();
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,8 @@ class VendorInfo extends StatelessWidget {
                       Text(
                         "${vendor.email}",
                         style: openSans12W400(
-                            color: Colors.black.withOpacity(0.5),),
+                          color: Colors.black.withOpacity(0.5),
+                        ),
                       ),
                     ],
                   ),
@@ -93,8 +94,9 @@ class VendorInfo extends StatelessWidget {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6.r),
-                    color: AppColors.primary,),
+                  borderRadius: BorderRadius.circular(6.r),
+                  color: AppColors.primary,
+                ),
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),

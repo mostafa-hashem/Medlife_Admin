@@ -2,12 +2,12 @@ abstract class UserState {}
 
 class UserInitial extends UserState {}
 
-class GetUserLoading extends UserState {}
+class GetUsersLoading extends UserState {}
 
-class GetUserSuccess extends UserState {}
+class GetUsersSuccess extends UserState {}
 
-class GetUserError extends UserState {
+class GetUsersError extends UserState {
   final String message;
 
-  GetUserError(this.message);
+  GetUsersError(this.message);
 }
