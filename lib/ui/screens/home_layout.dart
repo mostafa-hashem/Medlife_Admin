@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medlife_v2/features/completed_requests/ui/screens/completed_requests.dart';
-import 'package:medlife_v2/features/user/ui/screens/users_screen.dart';
-import 'package:medlife_v2/features/vendor/ui/screens/vendors_screen.dart';
 import 'package:medlife_v2/ui/resources/app_colors.dart';
-import '../resources/text_styles.dart';
+import 'package:medlife_v2/ui/screens/dashboard.dart';
+import 'package:medlife_v2/ui/screens/home_screen.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout();
@@ -15,120 +12,46 @@ class HomeLayout extends StatefulWidget {
 
 class _HomeLayoutState extends State<HomeLayout> {
   int currentIndex = 0;
+  final List<Widget> screens = [
+    const HomeScreen(),
+    Dashboard(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 47.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Hello Ahmed,",
-                style: openSans18W500(color: const Color(0xff576A69)),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.r),
-                    color: const Color(0xfff1f4f6)),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 7.h, horizontal: 8.w),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            currentIndex = 0;
-                          });
-                        },
-                        child: Container(
-                          color: currentIndex == 0
-                              ? AppColors.primary
-                              : Color(0xfff1f4f6),
-                          height: 40.h,
-                          width: 90.w,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "User",
-                                style: currentIndex == 0
-                                    ? openSans12W600(color: Colors.white)
-                                    : openSans12W600(
-                                        color: const Color(0xff1E1E1E)),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            currentIndex = 1;
-                          });
-                        },
-                        child: Container(
-                          color: currentIndex == 1
-                              ? AppColors.primary
-                              : Color(0xfff1f4f6),
-                          height: 40.h,
-                          width: 90.w,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Vendor",
-                                style: currentIndex == 1
-                                    ? openSans12W600(color: Colors.white)
-                                    : openSans12W600(
-                                        color: const Color(0xff1E1E1E)),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            currentIndex = 2;
-                          });
-                        },
-                        child: Container(
-                          color: currentIndex == 2
-                              ? AppColors.primary
-                              : Color(0xfff1f4f6),
-                          height: 40.h,
-                          width: 90.w,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Requests",
-                                style: currentIndex == 2
-                                    ? openSans12W600(color: Colors.white)
-                                    : openSans12W600(
-                                        color: const Color(0xff1E1E1E)),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 16.h,
-              ),
-              currentIndex == 0 ? UsersScreen() : currentIndex == 1 ? VendorsScreen() : CompletedRequests(),
-            ],
-          ),
+        resizeToAvoidBottomInset: false,
+        extendBody: true,
+        body: screens[currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
+          backgroundColor: AppColors.primary,
+          type: BottomNavigationBarType.fixed,
+          elevation: 0,
+          currentIndex: currentIndex,
+          onTap: (index) => setState(() => currentIndex = index),
+          items: [
+            BottomNavigationBarItem(
+              icon: currentIndex == 0
+                  ? Icon(
+                      Icons.home,
+                      color: Colors.white,
+                    )
+                  : Icon(Icons.home_outlined),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: currentIndex == 1
+                  ? Icon(
+                      Icons.dashboard_customize,
+                      color: Colors.white,
+                    )
+                  : Icon(Icons.dashboard_customize_outlined),
+              label: 'Dashboard',
+            ),
+          ],
         ),
       ),
     );

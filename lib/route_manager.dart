@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:medlife_v2/features/auth/ui/screens/login_screen.dart';
-import 'package:medlife_v2/features/completed_requests/ui/screens/completed_request_details.dart';
 import 'package:medlife_v2/features/user/ui/screens/user_info.dart';
 import 'package:medlife_v2/features/vendor/ui/screens/vendor_info.dart';
 import 'package:medlife_v2/ui/screens/home_layout.dart';
+import 'package:medlife_v2/ui/screens/home_screen.dart';
 import 'package:medlife_v2/ui/screens/splash_screen.dart';
+
+import 'features/orders/ui/screens/order_details.dart';
 
 class Routes {
   static const String layout = "/layout";
+  static const String homeScreen = "/homeScreen";
   static const String splash = "/splashScreen";
   static const String login = "/login";
   static const String userInfo = "/userInfo";
@@ -20,6 +23,10 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     case Routes.layout:
       return MaterialPageRoute(
         builder: (_) => const HomeLayout(),
+      );
+    case Routes.homeScreen:
+      return MaterialPageRoute(
+        builder: (_) => const HomeScreen(),
       );
     case Routes.splash:
       return MaterialPageRoute(
@@ -41,7 +48,8 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
       );
     case Routes.completedRequestDetails:
       return MaterialPageRoute(
-        builder: (_) => const CompletedRequestDetails(),
+        settings: routeSettings,
+        builder: (_) => const OrderDetails(),
       );
     default:
       return null;
