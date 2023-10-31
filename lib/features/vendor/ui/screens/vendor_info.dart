@@ -2,15 +2,15 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medlife_v2/features/vendor/data/models/vendor.dart';
-import '../../../../ui/resources/app_colors.dart';
-import '../../../../ui/resources/text_styles.dart';
+import 'package:medlife_v2/ui/resources/app_colors.dart';
+import 'package:medlife_v2/ui/resources/text_styles.dart';
 
 class VendorInfo extends StatelessWidget {
   const VendorInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final vendor = ModalRoute.of(context)?.settings.arguments as Vendor;
+    final vendor = ModalRoute.of(context)!.settings.arguments! as Vendor;
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -61,7 +61,7 @@ class VendorInfo extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.account_circle,
                     size: 45,
                   ),
@@ -73,7 +73,7 @@ class VendorInfo extends StatelessWidget {
                     children: [
                       Text(
                         "${vendor.firstName} ${vendor.lastName}",
-                        style: openSans16W500(color: Color(0xff27292D)),
+                        style: openSans16W500(color: const Color(0xff27292D)),
                       ),
                       SizedBox(
                         height: 8.h,
@@ -81,7 +81,7 @@ class VendorInfo extends StatelessWidget {
                       Text(
                         "${vendor.email}",
                         style: openSans12W400(
-                            color: Colors.black.withOpacity(0.5)),
+                            color: Colors.black.withOpacity(0.5),),
                       ),
                     ],
                   ),
@@ -94,7 +94,7 @@ class VendorInfo extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6.r),
-                    color: AppColors.primary),
+                    color: AppColors.primary,),
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -113,13 +113,12 @@ class VendorInfo extends StatelessWidget {
                     dismissOnTouchOutside: false,
                     context: context,
                     dialogType: DialogType.question,
-                    animType: AnimType.scale,
                     btnOkColor: AppColors.primary,
                     title: 'Block user',
                     desc: 'Do You want to block this user ?',
                     btnCancelOnPress: () {},
                     btnOkOnPress: () {},
-                  )..show();
+                  ).show();
                 },
                 child: Row(
                   children: [
@@ -128,10 +127,10 @@ class VendorInfo extends StatelessWidget {
                       style: openSans16W400(color: Colors.black),
                     ),
                     const Spacer(),
-                    Icon(
+                    const Icon(
                       Icons.arrow_forward_ios_outlined,
                       size: 20,
-                    )
+                    ),
                   ],
                 ),
               ),

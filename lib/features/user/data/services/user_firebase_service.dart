@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medlife_v2/utils/constants.dart';
-import '../models/user.dart';
+import 'package:medlife_v2/features/user/data/models/user.dart';
 
 class UserFirebaseService {
   final _usersCollection =

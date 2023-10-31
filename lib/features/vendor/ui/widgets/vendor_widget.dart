@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medlife_v2/features/vendor/data/models/vendor.dart';
-import '../../../../ui/resources/text_styles.dart';
+import 'package:medlife_v2/ui/resources/text_styles.dart';
 
 class VendorWidget extends StatelessWidget {
   final Vendor vendor;
@@ -15,7 +15,7 @@ class VendorWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(
+              const Icon(
                 Icons.account_circle,
                 size: 40,
               ),
@@ -27,7 +27,7 @@ class VendorWidget extends StatelessWidget {
                 children: [
                   Text(
                     "${vendor.firstName} ${vendor.lastName}",
-                    style: openSans16W500(color: Color(0xff27292D)),
+                    style: openSans16W500(color: const Color(0xff27292D)),
                   ),
                   SizedBox(
                     height: 8.h,
@@ -39,7 +39,7 @@ class VendorWidget extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              Icon(
+              const Icon(
                 Icons.arrow_forward_ios_outlined,
                 size: 15,
               ),
@@ -48,7 +48,7 @@ class VendorWidget extends StatelessWidget {
           SizedBox(
             height: 8.h,
           ),
-          Divider(thickness: 1),
+          const Divider(thickness: 1),
         ],
       ),
     );

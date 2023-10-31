@@ -2,15 +2,15 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medlife_v2/ui/resources/app_colors.dart';
-import '../../../../ui/resources/text_styles.dart';
-import '../../data/models/user.dart';
+import 'package:medlife_v2/ui/resources/text_styles.dart';
+import 'package:medlife_v2/features/user/data/models/user.dart';
 
 class UserInfo extends StatelessWidget {
   const UserInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final user = ModalRoute.of(context)?.settings.arguments as User;
+    final user = ModalRoute.of(context)!.settings.arguments! as User;
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -61,7 +61,7 @@ class UserInfo extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.account_circle,
                     size: 45,
                   ),
@@ -73,7 +73,7 @@ class UserInfo extends StatelessWidget {
                     children: [
                       Text(
                         "${user.firstName} ${user.lastName}",
-                        style: openSans16W500(color: Color(0xff27292D)),
+                        style: openSans16W500(color: const Color(0xff27292D)),
                       ),
                       SizedBox(
                         height: 8.h,
@@ -81,7 +81,7 @@ class UserInfo extends StatelessWidget {
                       Text(
                         "${user.email}",
                         style: openSans12W400(
-                            color: Colors.black.withOpacity(0.5)),
+                            color: Colors.black.withOpacity(0.5),),
                       ),
                     ],
                   ),
@@ -94,7 +94,7 @@ class UserInfo extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6.r),
-                    color: AppColors.primary),
+                    color: AppColors.primary,),
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -113,7 +113,6 @@ class UserInfo extends StatelessWidget {
                     dismissOnTouchOutside: false,
                     context: context,
                     dialogType: DialogType.question,
-                    animType: AnimType.scale,
                     btnOkColor: AppColors.primary,
                     title: 'Block user',
                     desc: 'Do You want to block this user ?',
@@ -121,7 +120,7 @@ class UserInfo extends StatelessWidget {
                     btnOkOnPress: () {
 
                     },
-                  )..show();
+                  ).show();
                 },
                 child: Row(
                   children: [
@@ -130,10 +129,10 @@ class UserInfo extends StatelessWidget {
                       style: openSans16W400(color: Colors.black),
                     ),
                     const Spacer(),
-                    Icon(
+                    const Icon(
                       Icons.arrow_forward_ios_outlined,
                       size: 20,
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -6,8 +6,8 @@ class UsersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: const Column(
+    return const Expanded(
+      child: Column(
         children: [
           UsersListView(),
         ],

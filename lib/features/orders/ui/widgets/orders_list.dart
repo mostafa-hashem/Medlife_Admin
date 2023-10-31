@@ -20,14 +20,14 @@ class OrdersList extends StatelessWidget {
           return GestureDetector(
             onTap: () => Navigator.pushNamed(
                 context, Routes.completedRequestDetails,
-                arguments: orders[index]),
+                arguments: orders[index],),
             child: SizedBox(
               height: 85.h,
               child: Column(
                 children: [
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.account_circle,
                         size: 40,
                       ),
@@ -62,10 +62,10 @@ class OrdersList extends StatelessWidget {
                         ],
                       ),
                       const Spacer(),
-                      Icon(
+                      const Icon(
                         Icons.arrow_forward_ios_outlined,
                         size: 15,
-                      )
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -77,7 +77,7 @@ class OrdersList extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) {
-          return Divider(thickness: 1);
+          return const Divider(thickness: 1);
         },
       ),
     );

@@ -8,7 +8,7 @@ import 'package:medlife_v2/features/user/ui/screens/users_screen.dart';
 import 'package:medlife_v2/features/vendor/ui/screens/vendors_screen.dart';
 import 'package:medlife_v2/ui/resources/app_colors.dart';
 
-import '../resources/text_styles.dart';
+import 'package:medlife_v2/ui/resources/text_styles.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen();
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.r),
-                      color: const Color(0xfff1f4f6)),
+                      color: const Color(0xfff1f4f6),),
                   child: Padding(
                     padding:
                         EdgeInsets.symmetric(vertical: 7.h, horizontal: 8.w),
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Container(
                             color: currentIndex == 0
                                 ? AppColors.primary
-                                : Color(0xfff1f4f6),
+                                : const Color(0xfff1f4f6),
                             height: 40.h,
                             width: 90.w,
                             child: Row(
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: currentIndex == 0
                                       ? openSans12W600(color: Colors.white)
                                       : openSans12W600(
-                                          color: const Color(0xff1E1E1E)),
+                                          color: const Color(0xff1E1E1E),),
                                 ),
                               ],
                             ),
@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Container(
                             color: currentIndex == 1
                                 ? AppColors.primary
-                                : Color(0xfff1f4f6),
+                                : const Color(0xfff1f4f6),
                             height: 40.h,
                             width: 90.w,
                             child: Row(
@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: currentIndex == 1
                                       ? openSans12W600(color: Colors.white)
                                       : openSans12W600(
-                                          color: const Color(0xff1E1E1E)),
+                                          color: const Color(0xff1E1E1E),),
                                 ),
                               ],
                             ),
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Container(
                             color: currentIndex == 2
                                 ? AppColors.primary
-                                : Color(0xfff1f4f6),
+                                : const Color(0xfff1f4f6),
                             height: 40.h,
                             width: 90.w,
                             child: Row(
@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: currentIndex == 2
                                       ? openSans12W600(color: Colors.white)
                                       : openSans12W600(
-                                          color: const Color(0xff1E1E1E)),
+                                          color: const Color(0xff1E1E1E),),
                                 ),
                               ],
                             ),
@@ -145,11 +145,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 16.h,
                 ),
-                currentIndex == 0
-                    ? UsersScreen()
-                    : currentIndex == 1
-                        ? VendorsScreen()
-                        : Orders(),
+                if (currentIndex == 0) const UsersScreen() else currentIndex == 1
+                        ? const VendorsScreen()
+                        : const Orders(),
               ],
             ),
           ),

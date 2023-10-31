@@ -16,15 +16,15 @@ class VendorsListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
                 onTap: () => Navigator.pushNamed(context, Routes.vendorInfo,
-                    arguments: vendor[index]),
-                child: VendorWidget(vendor: vendor[index]));
+                    arguments: vendor[index],),
+                child: VendorWidget(vendor: vendor[index]),);
           },
           separatorBuilder: (context, index) {
             return SizedBox(
               height: 15.h,
             );
           },
-          itemCount: vendor.length),
+          itemCount: vendor.length,),
     );
   }
 }

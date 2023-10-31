@@ -6,10 +6,10 @@ class Orders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return const Expanded(
       child: Column(
         children: [
-          const OrdersList(),
+          OrdersList(),
         ],
       ),
     );

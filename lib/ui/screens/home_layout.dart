@@ -14,7 +14,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   int currentIndex = 0;
   final List<Widget> screens = [
     const HomeScreen(),
-    Dashboard(),
+    const Dashboard(),
   ];
 
   @override
@@ -35,20 +35,20 @@ class _HomeLayoutState extends State<HomeLayout> {
           items: [
             BottomNavigationBarItem(
               icon: currentIndex == 0
-                  ? Icon(
+                  ? const Icon(
                       Icons.home,
                       color: Colors.white,
                     )
-                  : Icon(Icons.home_outlined),
+                  : const Icon(Icons.home_outlined),
               label: 'Home',
             ),
             BottomNavigationBarItem(
               icon: currentIndex == 1
-                  ? Icon(
+                  ? const Icon(
                       Icons.dashboard_customize,
                       color: Colors.white,
                     )
-                  : Icon(Icons.dashboard_customize_outlined),
+                  : const Icon(Icons.dashboard_customize_outlined),
               label: 'Dashboard',
             ),
           ],

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medlife_v2/features/vendor/cubit/vendor_state.dart';
 import 'package:medlife_v2/features/vendor/data/models/vendor.dart';
 import 'package:medlife_v2/features/vendor/data/services/vendor_firebase_service.dart';
-import '../../../utils/data/failure/failure.dart';
+import 'package:medlife_v2/utils/data/failure/failure.dart';
 
 class VendorCubit extends Cubit<VendorState> {
   VendorCubit() : super(VendorInitial());

@@ -6,7 +6,7 @@ import 'package:medlife_v2/ui/screens/home_layout.dart';
 import 'package:medlife_v2/ui/screens/home_screen.dart';
 import 'package:medlife_v2/ui/screens/splash_screen.dart';
 
-import 'features/orders/ui/screens/order_details.dart';
+import 'package:medlife_v2/features/orders/ui/screens/order_details.dart';
 
 class Routes {
   static const String layout = "/layout";
