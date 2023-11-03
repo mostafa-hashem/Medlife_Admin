@@ -177,14 +177,14 @@ class OrderDetails extends StatelessWidget {
                 ),
                 SummeryRow(
                   text: 'Delivery Fee',
-                  price: '+${order.orderCost.deliveryFee} SAR',
+                  price: '+${order.orderCost.shipping} SAR',
                 ),
                 SizedBox(
                   height: 11.h,
                 ),
                 SummeryRow(
                   text: 'Bat',
-                  price: '+${order.orderCost.taxes} SAR',
+                  price: '+${order.orderCost.vat} SAR',
                 ),
                 SizedBox(
                   height: 11.h,

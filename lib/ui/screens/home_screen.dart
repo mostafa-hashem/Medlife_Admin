@@ -37,13 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Hello Ahmed,",
-                  style: openSans18W500(color: const Color(0xff576A69)),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.r),
@@ -55,84 +48,87 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              currentIndex = 0;
-                            });
-                          },
-                          child: Container(
-                            color: currentIndex == 0
-                                ? AppColors.primary
-                                : const Color(0xfff1f4f6),
-                            height: 40.h,
-                            width: 90.w,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "User",
-                                  style: currentIndex == 0
-                                      ? openSans12W600(color: Colors.white)
-                                      : openSans12W600(
-                                          color: const Color(0xff1E1E1E),
-                                        ),
-                                ),
-                              ],
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                currentIndex = 0;
+                              });
+                            },
+                            child: Container(
+                              color: currentIndex == 0
+                                  ? AppColors.primary
+                                  : const Color(0xfff1f4f6),
+                              height: 40.h,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "User",
+                                    style: currentIndex == 0
+                                        ? openSans12W600(color: Colors.white)
+                                        : openSans12W600(
+                                            color: const Color(0xff1E1E1E),
+                                          ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              currentIndex = 1;
-                            });
-                          },
-                          child: Container(
-                            color: currentIndex == 1
-                                ? AppColors.primary
-                                : const Color(0xfff1f4f6),
-                            height: 40.h,
-                            width: 90.w,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Vendor",
-                                  style: currentIndex == 1
-                                      ? openSans12W600(color: Colors.white)
-                                      : openSans12W600(
-                                          color: const Color(0xff1E1E1E),
-                                        ),
-                                ),
-                              ],
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                currentIndex = 1;
+                              });
+                            },
+                            child: Container(
+                              color: currentIndex == 1
+                                  ? AppColors.primary
+                                  : const Color(0xfff1f4f6),
+                              height: 40.h,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Vendor",
+                                    style: currentIndex == 1
+                                        ? openSans12W600(color: Colors.white)
+                                        : openSans12W600(
+                                            color: const Color(0xff1E1E1E),
+                                          ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              currentIndex = 2;
-                            });
-                          },
-                          child: Container(
-                            color: currentIndex == 2
-                                ? AppColors.primary
-                                : const Color(0xfff1f4f6),
-                            height: 40.h,
-                            width: 90.w,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Orders",
-                                  style: currentIndex == 2
-                                      ? openSans12W600(color: Colors.white)
-                                      : openSans12W600(
-                                          color: const Color(0xff1E1E1E),
-                                        ),
-                                ),
-                              ],
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                currentIndex = 2;
+                              });
+                            },
+                            child: Container(
+                              color: currentIndex == 2
+                                  ? AppColors.primary
+                                  : const Color(0xfff1f4f6),
+                              height: 40.h,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Orders",
+                                    style: currentIndex == 2
+                                        ? openSans12W600(color: Colors.white)
+                                        : openSans12W600(
+                                            color: const Color(0xff1E1E1E),
+                                          ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
