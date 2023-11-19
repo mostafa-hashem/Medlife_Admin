@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:medlife_v2/features/vendor/cubit/vendor_state.dart';
 import 'package:medlife_v2/features/vendor/data/models/vendor.dart';
 import 'package:medlife_v2/features/vendor/data/services/vendor_firebase_service.dart';
@@ -13,7 +12,7 @@ class VendorCubit extends Cubit<VendorState> {
 
   final _vendorFirebaseService = VendorFirebaseService();
   List<Vendor> vendors = [];
-  late final Vendor mostOrdersVendor;
+  late final Vendor? mostOrdersVendor;
 
   Future<void> getVendors() async {
     emit(GetVendorsLoading());
@@ -29,7 +28,7 @@ class VendorCubit extends Cubit<VendorState> {
     emit(GetMostOrdersVendorLoading());
     try {
       mostOrdersVendor = await _vendorFirebaseService.getMostOrdersVendor();
-      emit(GetMostOrdersVendorSuccess());
+          emit(GetMostOrdersVendorSuccess());
     } catch (e) {
       emit(GetMostOrdersVendorError(Failure.fromException(e).message));
     }

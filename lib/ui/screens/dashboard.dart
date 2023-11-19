@@ -28,21 +28,21 @@ class Dashboard extends StatelessWidget {
           ),
           StatisticsWidget(
             text: 'Users',
-            statistics: UserCubit.get(context).users.length.toString(),
+            statistics: "${UserCubit.get(context).users.length}",
           ),
           SizedBox(
             height: 32.h,
           ),
           StatisticsWidget(
             text: 'Vendors',
-            statistics: VendorCubit.get(context).vendors.length.toString(),
+            statistics: "${VendorCubit.get(context).vendors.length}",
           ),
           SizedBox(
             height: 32.h,
           ),
           StatisticsWidget(
             text: 'Orders',
-            statistics: OrdersCubit.get(context).allOrders.length.toString(),
+            statistics: "${OrdersCubit.get(context).allOrders.length}",
           ),
           SizedBox(
             height: 60.h,
@@ -54,21 +54,38 @@ class Dashboard extends StatelessWidget {
           SizedBox(
             height: 22.h,
           ),
-          Card(
-            elevation: 10,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                10.r,
+          if (VendorCubit.get(context).mostOrdersVendor != null)
+            Card(
+              elevation: 10,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  10.r,
+                ),
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(18),
+                child: Text(
+                  VendorCubit.get(context).mostOrdersVendor!.email!,
+                  style: openSans18W500(color: Colors.black),
+                ),
+              ),
+            )
+          else
+            Card(
+              elevation: 10,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  10.r,
+                ),
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(18),
+                child: Text(
+                  "No orders yet",
+                  style: openSans18W500(color: Colors.black),
+                ),
               ),
             ),
-            child: Container(
-              padding: const EdgeInsets.all(18),
-              child: Text(
-                VendorCubit.get(context).mostOrdersVendor.email!,
-                style: openSans18W500(color: Colors.black),
-              ),
-            ),
-          ),
         ],
       ),
     );

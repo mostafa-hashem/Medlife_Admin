@@ -13,21 +13,25 @@ class VendorFirebaseService {
         .toList();
   }
 
-  Future<Vendor> getMostOrdersVendor() async {
+  Future<Vendor?> getMostOrdersVendor() async {
     int highestNumOfOrders = 0;
     late QueryDocumentSnapshot mostOrdersVendorDoc;
     final vendorsQuerySnapshot = await _vendorsCollection.get();
-
-    for (final vendorDoc in vendorsQuerySnapshot.docs) {
-      final vendorOrdersQuerySnapshot =
-          await vendorDoc.reference.collection(FirebasePath.orders).get();
-      final vendorNumOfOrders = vendorOrdersQuerySnapshot.docs.length;
-      if (vendorNumOfOrders > highestNumOfOrders) {
-        highestNumOfOrders = vendorNumOfOrders;
-        mostOrdersVendorDoc = vendorDoc;
+    if (vendorsQuerySnapshot.docs.isEmpty) {
+      return null;
+    } else {
+      for (final vendorDoc in vendorsQuerySnapshot.docs) {
+        final vendorOrdersQuerySnapshot =
+            await vendorDoc.reference.collection(FirebasePath.orders).get();
+        final vendorNumOfOrders = vendorOrdersQuerySnapshot.docs.length;
+        if (vendorNumOfOrders > highestNumOfOrders) {
+          highestNumOfOrders = vendorNumOfOrders;
+          mostOrdersVendorDoc = vendorDoc;
+        }
       }
+      return Vendor.fromJson(
+        mostOrdersVendorDoc.data()! as Map<String, dynamic>,
+      );
     }
-
-    return Vendor.fromJson(mostOrdersVendorDoc.data()! as Map<String, dynamic>);
   }
 }
